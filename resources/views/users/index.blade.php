@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <br>
-            <a href="{{url('users/create')}}" class="btn btn-primary">Añadir usuario</a>
+            <a href="{{url('users/create')}}" class="btn btn-primary mb-3">Añadir usuario</a>
             @if (session('success'))
                     <div class="alert alert-success mt-3" role="success" >
                       {{ session('success') }}
