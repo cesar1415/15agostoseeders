@@ -11,25 +11,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <form action="{{route('users.store')}}" method="post">
+            <form action="{{route('users.update', $user->id)}}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" value="{{$user->name}}">
                 </div>
 
                 <div class="form-group">
                     <label for="">Apellido</label>
-                    <input type="text" class="form-control" name="lastname">
+                    <input type="text" class="form-control" name="lastname" value="{{$user->lastname}}">
                 </div>
 
                 <div class="form-group">
                     <label for="">Correo</label>
-                    <input type="text" class="form-control" name="email">
+                    <input type="text" class="form-control" name="email" value="{{$user->email}}">
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary">Crear nuevo usuario</button>
+                    <button class="btn btn-primary">Actualizar</button>
                     <a href="{{url('users')}}" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>

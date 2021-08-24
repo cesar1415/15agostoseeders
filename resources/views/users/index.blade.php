@@ -45,8 +45,8 @@
                                 <form action="{{route('users.destroy', $user->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="users/{{$user->id}}"><i class="fas fa-eye" title="Ver detalles"></i></a>
-                                    <a href=""><i class="fas fa-edit" title="Editar"></i></a>
+                                    <a href="{{route('users.show', $user->id)}}"><i class="fas fa-eye" title="Ver detalles"></i></a>
+                                    <a href="{{route('users.edit', $user->id)}}"><i class="fas fa-edit" title="Editar"></i></a>
                                     <button type="submit" title="Eliminar">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
