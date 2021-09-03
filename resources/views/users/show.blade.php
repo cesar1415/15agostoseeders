@@ -24,6 +24,10 @@
                     <td><b>CORREO</b></td>
                     <td>{{$user->email}}</td>
                 </tr>
+                <tr>
+                    <td><b>CELLAR</b></td>
+                    <td>{{$user->phone}}</td>
+                </tr>
             </table>
             <hr>
             <a href="{{url('users')}}" class="btn btn-primary">Inicio</a>

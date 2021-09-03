@@ -15,5 +15,6 @@ class User extends Model
         'name',
         'lastname',
         'email',
+        'phone',
     ];
 }

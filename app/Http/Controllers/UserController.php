@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::paginate(9);
         return view('users.index', compact('users'));
     }
 
@@ -30,6 +30,7 @@ class UserController extends Controller
             'name'=>$request->input('name'),
             'lastname'=>$request->input('lastname'),
             'email'=>$request->input('email'),
+            'phone'=>$request->input('phone'),
         ]);
         return redirect('users')->with('success', 'Usuario creado correctamente');
     }

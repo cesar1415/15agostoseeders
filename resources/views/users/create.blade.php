@@ -29,6 +29,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="">Celular</label>
+                    <input type="number" class="form-control" name="phone">
+                </div>
+
+                <div class="form-group">
                     <button class="btn btn-primary">Crear nuevo usuario</button>
                     <a href="{{url('users')}}" class="btn btn-danger">Cancelar</a>
                 </div>

@@ -9,57 +9,71 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <br>
-            <a href="{{url('users/create')}}" class="btn btn-primary mb-3">Añadir usuario</a>
-            @if (session('success'))
-                    <div class="alert alert-success mt-3" role="success" >
-                      {{ session('success') }}
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Usuarios</h4>
+                <p class="card-category">Usuarios registrados</p>
+              </div>
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <br>
+                        <a href="{{url('users/create')}}" class="btn btn-primary mb-3">Añadir usuario</a>
+                        @if (session('success'))
+                                <div class="alert alert-success mt-3" role="success" >
+                                  {{ session('success') }}
+                                </div>
+                                @endif
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>APELLIDO</th>
+                                        <th>CORREO</th>
+                                        <th>CELULAR</th>
+                                        <th>FECHA CREACION</th>
+                                        <th>FECHA ACTUALIZACION</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td><a href="users/{{$user->id}}">{{$user->id}}</a></td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->lastname}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->phone}}</td>
+                                        <td>{{$user->created_at}}</td>
+                                        <td>{{$user->updated_at}}</td>
+                                        <td>
+                                            <form action="{{route('users.destroy', $user->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{route('users.show', $user->id)}}"><i class="fas fa-eye" title="Ver detalles"></i></a>
+                                                <a href="{{route('users.edit', $user->id)}}"><i class="fas fa-edit" title="Editar"></i></a>
+                                                <button type="submit" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                        {{$users->links()}}
                     </div>
-                    @endif
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOMBRE</th>
-                            <th>APELLIDO</th>
-                            <th>CORREO</th>
-                            <th>FECHA CREACION</th>
-                            <th>FECHA ACTUALIZACION</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <td><a href="users/{{$user->id}}">{{$user->id}}</a></td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->lastname}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->created_at}}</td>
-                            <td>{{$user->updated_at}}</td>
-                            <td>
-                                <form action="{{route('users.destroy', $user->id)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="{{route('users.show', $user->id)}}"><i class="fas fa-eye" title="Ver detalles"></i></a>
-                                    <a href="{{route('users.edit', $user->id)}}"><i class="fas fa-edit" title="Editar"></i></a>
-                                    <button type="submit" title="Eliminar">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-                </table>
+                </div>
             </div>
-            {{$users->links()}}
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+  </div>
 </body>
 </html>
