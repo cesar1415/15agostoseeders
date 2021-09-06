@@ -9,14 +9,14 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container-fluid">
+    {{-- <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">Usuarios</h4>
                 <p class="card-category">Usuarios registrados</p>
-              </div>
+              </div> --}}
               <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -70,10 +70,10 @@
                         {{$users->links()}}
                     </div>
                 </div>
-            </div>
+            {{-- </div>
             </div>
           </div>
         </div>
-  </div>
+  </div> --}}
 </body>
 </html>
